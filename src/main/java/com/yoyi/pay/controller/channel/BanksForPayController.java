@@ -4,7 +4,6 @@ import com.yoyi.pay.controller.BaseUtils;
 import com.yoyi.pay.utils.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -95,11 +94,11 @@ public class BanksForPayController {
             HttpsUtil httpsUtil = HttpsUtil.getInstance();
             Map<String, String> sendParams = new HashMap<>(8);
             logger.info("获取付款通道,将参数封装成tranData,处理中");
+            sendParams.put("merSignMsg", merSignMsg);
             sendParams.put("merchantId", merchantId);
-            sendParams.put("version", version);
             sendParams.put("interfaceName", interfaceName);
             sendParams.put("tranData", tranData);
-            sendParams.put("merSignMsg", merSignMsg);
+            sendParams.put("version", version);
             String value = httpsUtil.post(regUrl, sendParams, null);
 
             logger.info("获取付款通道,调取接口返回密文,{}", value);
