@@ -43,4 +43,14 @@ public class IndexController {
     public String protocol() {
         return "index/protocol";
     }
+
+    /**
+     * 代扣,页面跳转
+     *
+     * @return
+     */
+    @RequestMapping(value = "/withholdSign")
+    public String withholdSign() {
+        return "index/withhold";
+    }
 }

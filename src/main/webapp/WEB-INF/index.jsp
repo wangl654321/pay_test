@@ -161,6 +161,15 @@
 
         <li></li>
         <li></li>
+        <li>
+            <a href="${ctx}/single/pay">单笔汇款接口</a>
+        </li>
+        <li>
+            <a href="${ctx}/single/query">单笔汇款查询接口</a>
+        </li>
+
+        <li></li>
+        <li></li>
 
         <li>
             <a href="${ctx}/settle">结算通测试</a>
@@ -168,15 +177,8 @@
         <li>
             <a href="${ctx}/protocol">协议支付</a>
         </li>
-
-        <li></li>
-        <li></li>
-
         <li>
-            <a href="${ctx}/single/pay">单笔汇款接口</a>
-        </li>
-        <li>
-            <a href="${ctx}/single/query">单笔汇款查询接口</a>
+            <a href="${ctx}/withholdSign">代扣</a>
         </li>
     </ul>
 </div>
