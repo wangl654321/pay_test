@@ -102,8 +102,9 @@
             <p><label>有效期:</label><input name="expDt" id="expDt" type="text" placeholder="必填(当卡类型是02是为必输)"/></p>
 
             <p><label>姓名:</label><input name="userName" id="userName" type="text" class="check_required" placeholder="必填"/></p>
-            <p><label>订单金额:</label><input name="orderAmt" id="orderAmt" type="text" class="check_required" placeholder="必填"/></p>
-
+            <%--<p><label>订单金额:</label><input name="orderAmt" id="orderAmt" type="text" class="check_required" placeholder="必填"/></p>--%>
+            <p><label>订单号:</label><input name="orderNo" id="orderNo" type="text" placeholder="非必填"/></p>
+            <p><label>协议号:</label><input name="procotolId" id="procotolId" type="text" placeholder="非必填"/></p>
             <p>
                 <input type='button' value='提 交' onclick="subFrom()"/>
                 <input type='button' value='返 回' onclick="javascript:history.go(-1)"/>

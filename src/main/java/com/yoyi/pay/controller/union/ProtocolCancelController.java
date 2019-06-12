@@ -113,7 +113,7 @@ public class ProtocolCancelController {
             sendParams.put("version", version);
             sendParams.put("tranData", tranData);
             sendParams.put("merSignMsg", merSignMsg);
-            String value = instance.get(regUrl, sendParams, null);
+            String value = instance.post(regUrl, sendParams, null);
 
             logger.info("协议解约,调取接口返回密文,{}", value);
             String decode = Base64Utils.decode(value,"UTF-8");

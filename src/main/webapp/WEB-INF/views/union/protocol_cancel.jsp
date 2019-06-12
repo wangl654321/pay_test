@@ -87,12 +87,11 @@
                     </c:forEach>
                 </select>
             </p>
+            <p><label>协议号:</label><input name="procotolId" id="procotolId" type="text" placeholder="协议号和三要素选填一个"/></p>
 
             <p><label>卡号:</label><input name="payCardNo" id="payCardNo" type="text" placeholder="非必填"/></p>
             <p><label>证件号码:</label><input name="certNo" id="certNo" type="text" placeholder="非必填"/></p>
             <p><label>姓名:</label><input name="userName" id="userName" type="text" placeholder="非必填"/></p>
-
-            <p><label>协议号:</label><input name="procotolId" id="procotolId" type="text" placeholder="非必填"/></p>
             <br><br><br>
             <p>
                 <input type='button' value='提 交' onclick="subFrom()"/>

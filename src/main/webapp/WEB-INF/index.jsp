@@ -168,6 +168,16 @@
         <li>
             <a href="${ctx}/protocol">协议支付</a>
         </li>
+
+        <li></li>
+        <li></li>
+
+        <li>
+            <a href="${ctx}/single/pay">单笔汇款接口</a>
+        </li>
+        <li>
+            <a href="${ctx}/single/query">单笔汇款接口</a>
+        </li>
     </ul>
 </div>
 <!--尾部-->

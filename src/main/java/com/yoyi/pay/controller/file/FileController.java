@@ -134,7 +134,7 @@ public class FileController {
                     subList = listMap.subList(i * countNum, size);
                 }
                 if (!subList.isEmpty()) {
-                    yyPayService.batchInsert(subList);
+                    //yyPayService.batchInsert(subList);
                 }
             }
             return  String.valueOf(size);
