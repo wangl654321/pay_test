@@ -72,6 +72,26 @@ public class BaseUtils {
         TEST_NN_SING = cer;
     }
 
+    /**
+     * 商户号
+     */
+    public static String MERCHANT_ID;
+
+    @Value("${yMerchantId}")
+    public void setMerchantId(String yMerchantId) {
+        MERCHANT_ID = yMerchantId;
+    }
+
+    /**
+     * 请求地址
+     */
+    public static String URL;
+
+    @Value("${url}")
+    public void setUrl(String url) {
+        URL = url;
+    }
+
 
     /**
      * 获取证书文件绝对路径
