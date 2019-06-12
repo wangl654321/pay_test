@@ -176,7 +176,7 @@
             <a href="${ctx}/single/pay">单笔汇款接口</a>
         </li>
         <li>
-            <a href="${ctx}/single/query">单笔汇款接口</a>
+            <a href="${ctx}/single/query">单笔汇款查询接口</a>
         </li>
     </ul>
 </div>
