@@ -56,7 +56,7 @@
 
             <p><label>支付订单号:</label><input name="orderNo" id="orderNo" type="text" placeholder="支付订单号" required="required"/></p>
             <p><label>退款金额:</label><input name="refundAmt" id="refundAmt" type="text" placeholder="退款金额" required="required"/></p>
-            <p><label>通知地址:</label><input name="notifyURL" id="notifyURL" value="http://kang115326.xicp.net:13829/test/pay/notify" type="text"class="check_required"  placeholder="非必填"/></p>
+            <p><label>通知地址:</label><input name="notifyURL" id="notifyURL" value="http://kang115326.xicp.net:13829/order/pay/notify" type="text"class="check_required"  placeholder="非必填"/></p>
             <p><label>退款订单号:</label><input name="merRefundOrderFlowNo" id="merRefundOrderFlowNo" type="text" placeholder="退款订单号" required="required"/></p>
             <p>
                 <input id="submitForm" type='submit' value='提 交'/>

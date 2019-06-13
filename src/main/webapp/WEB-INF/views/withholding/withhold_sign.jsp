@@ -58,7 +58,7 @@
             <p><label>银行卡号:</label><input name="bankAccountNo" id="bankAccountNo" type="text" placeholder="银行卡号" required="required"/></p>
 
             <p><label>商户返回URL:</label><input name="returnURL" id="returnURL" type="text" class="check_required" value="https://www.baidu.com/" placeholder="必填"/></p>
-            <p><label>回调地址:</label><input name="backUrl" id="backUrl" value="http://kang115326.xicp.net:13829/test/pay/notify" type="text"class="check_required"  placeholder="非必填"/></p>
+            <p><label>回调地址:</label><input name="backUrl" id="backUrl" value="http://kang115326.xicp.net:13829/order/pay/notify" type="text"class="check_required"  placeholder="非必填"/></p>
             <p><label>手机号:</label><input name="mobileNo" id="mobileNo" type="text" placeholder="必填" required="required"/></p>
             <p><label>账户名:</label><input name="userName" id="userName" type="text" placeholder="必填" required="required"/></p>
             <p><label>证件类型:</label>

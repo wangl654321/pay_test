@@ -83,7 +83,7 @@
             <p><label>商品单价:</label><input name="goodsPrice" id="goodsPrice" type="text" placeholder="非必填"/></p>
             <p><label>客户端IP:</label><input name="clientIp" id="transIP" type="text" value="127.0.0.1" placeholder="必填"/></p>
 
-            <p><label>通知地址:</label><input name="backUrl" id="backUrl" value="http://kang115326.xicp.net:13829/test/pay/notify" type="text"class="check_required"  placeholder="非必填"/></p>
+            <p><label>通知地址:</label><input name="backUrl" id="backUrl" value="http://kang115326.xicp.net:13829/order/pay/notify" type="text"class="check_required"  placeholder="非必填"/></p>
             <p>
                 <input type='submit' value='提 交'/>
                 <input type='button' value='返 回' onclick="javascript:history.go(-1)"/>

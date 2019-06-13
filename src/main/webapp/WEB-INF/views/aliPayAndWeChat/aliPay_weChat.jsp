@@ -132,7 +132,7 @@
             <p><label>商户返回URL:</label><input name="returnURL" id="returnURL" type="text" class="check_required"
                                              value="https://www.baidu.com/" placeholder="必填"/></p>
             <p><label>商户后台通知URL:</label><input name="notifyURL" id="notifyURL" type="text" class="check_required"
-                                               value="http://wanglu654321.wicp.net/test/pay/notify" placeholder="必填"/>
+                                               value="http://wanglu654321.wicp.net/order/pay/notify" placeholder="必填"/>
             </p>
             <p><label>卡种:</label>
                 <select name="cardType" id="cardType">

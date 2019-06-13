@@ -52,7 +52,7 @@
             <p><label>商户返回URL:</label><input name="returnURL" id="returnURL" type="text" class="check_required" value="https://www.baidu.com/" placeholder="必填"/></p>
             <p>
                 <label>商户后台通知URL:</label>
-                <input name="notifyURL" id="notifyURL" type="text" value="http://wanglu654321.wicp.net/test/pay/notify" placeholder="商户后台通知URL" required="required"/>
+                <input name="notifyURL" id="notifyURL" type="text" value="http://wanglu654321.wicp.net/order/pay/notify" placeholder="商户后台通知URL" required="required"/>
             </p>
 
             <p><label>收款账户:</label><input name="recAcct" id="recAcct" type="text" value="" placeholder="必填" required="required"/></p>

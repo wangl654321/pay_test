@@ -33,7 +33,7 @@ import java.util.Map;
  *
  */
 @Controller
-@RequestMapping("/test/pay")
+@RequestMapping("/order/pay")
 public class PayNotifyController {
 
     private static Logger logger = LogManager.getLogger();
