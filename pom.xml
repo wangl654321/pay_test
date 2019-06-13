@@ -200,6 +200,8 @@
             <id>dev</id>
             <properties>
                 <spring.profiles.active>dev</spring.profiles.active>
+                <!--项目名称-->
+                <project>pay_test</project>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -210,6 +212,8 @@
             <id>pro</id>
             <properties>
                 <spring.profiles.active>pro</spring.profiles.active>
+                <!--项目名称-->
+                <project>ROOT</project>
             </properties>
         </profile>
     </profiles>
@@ -274,7 +278,7 @@
                 </executions>
             </plugin>
         </plugins>
-
-        <finalName>ROOT</finalName>
+        <!--项目名称-->
+        <finalName>${project}</finalName>
     </build>
 </project>
