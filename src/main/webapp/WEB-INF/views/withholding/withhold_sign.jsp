@@ -46,17 +46,10 @@
         <form id="fromId" method="post" action="${ctx}/withholding/saveWithholdSign" >
             <h3>代扣签约 请求参数</h3>
 
-            <p><label>测试地址:</label>
-                <input name="regUrl" id="regUrl" type="text" value="${test}/pay/withholdSign.do" required="required"/>
-            </p>
             <p><label>商户代码:</label><input name="merchantId" id="merchantId" type="text"value="${yMerchantId}" class="check_required"  placeholder="必填"/></p>
-            <p><label>接口名称:</label><input name="interfaceName" id="interfaceName" type="text" value="withholdSign" required="required"/></p>
-            <p><label>版本号:</label><input name="version" id="version" type="text" value="B2C1.0" placeholder="必填"/></p>
-
             <p><label>签约协议号:</label><input name="orderNo" id="orderNo" type="text" placeholder="协议号" required="required"/></p>
 
             <p><label>银行卡号:</label><input name="bankAccountNo" id="bankAccountNo" type="text" placeholder="银行卡号" required="required"/></p>
-
             <p><label>商户返回URL:</label><input name="returnURL" id="returnURL" type="text" class="check_required" value="https://www.baidu.com/" placeholder="必填"/></p>
             <p><label>回调地址:</label><input name="backUrl" id="backUrl" value="http://kang115326.xicp.net:13829/order/pay/notify" type="text"class="check_required"  placeholder="非必填"/></p>
             <p><label>手机号:</label><input name="mobileNo" id="mobileNo" type="text" placeholder="必填" required="required"/></p>

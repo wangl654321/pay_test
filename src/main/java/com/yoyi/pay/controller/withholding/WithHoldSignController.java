@@ -5,8 +5,8 @@ import com.yoyi.pay.utils.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -54,17 +54,13 @@ public class WithHoldSignController {
      * @param request
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/saveWithholdSign")
-    public String registered(HttpServletRequest request) {
+    public String registered(HttpServletRequest request, Model model) {
 
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String, String> params = new HashMap<>(8);
         //商户代码
         String merchantId = request.getParameter("merchantId");
-        //请求地址
-        String regUrl = request.getParameter("regUrl");
-        logger.info("代扣签约,将参数封装成tranData,请求地址,{}", regUrl);
 
         //接收页面参数封装xml在base64加密
         for (String keys : parameterMap.keySet()) {
@@ -84,20 +80,16 @@ public class WithHoldSignController {
             Map<String, String> sendParams = new HashMap<>(8);
 
             logger.info("代扣签约,将参数封装成tranData,处理中");
-            sendParams.put("merchantId", merchantId);
-            sendParams.put("tranData", tranData);
-            sendParams.put("merSignMsg", merSignMsg);
-            String value = instance.post(regUrl, sendParams, null);
-
-            logger.info("代扣签约,返回,{}", value);
-            String decode = Base64Utils.decode(value);
-            //将xml转换为map
-            Map<String, String> stringStringMap = YoYiPayUtil.xmlParse(decode);
-            result = json.toJson(stringStringMap);
+            model.addAttribute("merchantId", merchantId);
+            model.addAttribute("tranData", tranData);
+            model.addAttribute("merSignMsg", merSignMsg);
+            //sendParams.put("merchantId", merchantId);
+            //sendParams.put("tranData", tranData);
+            //sendParams.put("merSignMsg", merSignMsg);
             logger.info("代扣签约,调取接口返回明文,{}", result);
         } catch (Exception e) {
             logger.error("代扣签约,将参数封装成tranData,异常{}", e);
         }
-        return result;
+        return "withholding/withhold_sign_config";
     }
 }
