@@ -87,14 +87,8 @@ public class WithHoldPayController {
             sendParams.put("merchantId", merchantId);
             sendParams.put("tranData", tranData);
             sendParams.put("merSignMsg", merSignMsg);
-            String value = instance.post(regUrl, sendParams, null);
-
-            logger.info("代扣支付,返回,{}", value);
-            String decode = Base64Utils.decode(value);
-            //将xml转换为map
-            Map<String, String> stringStringMap = YoYiPayUtil.xmlParse(decode);
-            result = json.toJson(stringStringMap);
-            logger.info("代扣支付,调取接口返回明文,{}", result);
+            result = instance.post(regUrl, sendParams, null);
+            logger.info("代扣支付,返回,{}", result);
         } catch (Exception e) {
             logger.error("代扣支付,将参数封装成tranData,异常{}", e);
         }

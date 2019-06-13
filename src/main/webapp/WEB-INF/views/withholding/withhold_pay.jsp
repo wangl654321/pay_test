@@ -37,6 +37,16 @@
             rand = "0." + rand;
             $("#orderAmt").val(rand);
         })
+
+        function subFrom() {
+            $.post($("#fromId").attr("action"), $("#fromId").serialize(), function (data) {
+                if (data == "") {
+                    alert("未知异常");
+                    return false;
+                }
+                alert(data);
+            });
+        }
     </script>
 </head>
 <body>
@@ -85,7 +95,7 @@
 
             <p><label>通知地址:</label><input name="backUrl" id="backUrl" value="http://kang115326.xicp.net:13829/order/pay/notify" type="text"class="check_required"  placeholder="非必填"/></p>
             <p>
-                <input type='submit' value='提 交'/>
+                <input type='button' value='提 交' onclick="subFrom()"/>
                 <input type='button' value='返 回' onclick="javascript:history.go(-1)"/>
             </p>
         </form>
