@@ -15,7 +15,7 @@ import java.util.Map;
 /***
  *
  *
- * 描    述：代扣签约
+ * 描    述：代扣支付
  *
  * 创 建 者： @author wl
  * 创建时间： 2019/3/28 11:30
@@ -32,30 +32,30 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/withholding")
-public class WithHoldSignController {
+public class WithHoldPayController {
 
     private static Logger logger = LogManager.getLogger();
 
     private static JsonMapperUtil json = new JsonMapperUtil();
 
     /**
-     * 代扣签约,跳转
+     * 代扣支付,跳转
      *
      * @return
      */
-    @RequestMapping(value = "/withholdSign")
+    @RequestMapping(value = "/withholdPay")
     public String toJsp() {
-        return "withholding/withhold_sign";
+        return "withholding/withhold_pay";
     }
 
     /**
-     * 代扣签约,将参数封装成tranData
+     * 代扣支付,将参数封装成tranData
      *
      * @param request
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/saveWithholdSign")
+    @RequestMapping(value = "/saveWithholdPay")
     public String registered(HttpServletRequest request) {
 
         Map<String, String[]> parameterMap = request.getParameterMap();
@@ -64,7 +64,7 @@ public class WithHoldSignController {
         String merchantId = request.getParameter("merchantId");
         //请求地址
         String regUrl = request.getParameter("regUrl");
-        logger.info("代扣签约,将参数封装成tranData,请求地址,{}", regUrl);
+        logger.info("代扣支付,将参数封装成tranData,请求地址,{}", regUrl);
 
         //接收页面参数封装xml在base64加密
         for (String keys : parameterMap.keySet()) {
@@ -77,26 +77,26 @@ public class WithHoldSignController {
         try {
             String xml = YoYiPayUtil.parseXMLIsBlank(params);
             String tranData = Base64Utils.encode(xml);
-            logger.info("代扣签约,将参数封装成tranData,xml,{}", xml);
+            logger.info("代扣支付,将参数封装成tranData,xml,{}", xml);
             //订单签名数据
             String merSignMsg = ProcessMessage.sign(xml, BaseUtils.getPath(BaseUtils.TEST_SING), BaseUtils.TEST_PASSWORD);
             HttpsUtil instance = HttpsUtil.getInstance();
             Map<String, String> sendParams = new HashMap<>(8);
 
-            logger.info("代扣签约,将参数封装成tranData,处理中");
+            logger.info("代扣支付,将参数封装成tranData,处理中");
             sendParams.put("merchantId", merchantId);
             sendParams.put("tranData", tranData);
             sendParams.put("merSignMsg", merSignMsg);
             String value = instance.post(regUrl, sendParams, null);
 
-            logger.info("代扣签约,返回,{}", value);
+            logger.info("代扣支付,返回,{}", value);
             String decode = Base64Utils.decode(value);
             //将xml转换为map
             Map<String, String> stringStringMap = YoYiPayUtil.xmlParse(decode);
             result = json.toJson(stringStringMap);
-            logger.info("代扣签约,调取接口返回明文,{}", result);
+            logger.info("代扣支付,调取接口返回明文,{}", result);
         } catch (Exception e) {
-            logger.error("代扣签约,将参数封装成tranData,异常{}", e);
+            logger.error("代扣支付,将参数封装成tranData,异常{}", e);
         }
         return result;
     }

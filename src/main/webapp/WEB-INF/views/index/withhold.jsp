@@ -24,7 +24,21 @@
         <li>
             <a href="${ctx}/withholding/withholdSign">代扣签约</a>
         </li>
-
+        <li>
+            <a href="${ctx}/withholding/withholdSignCancel">代扣解约</a>
+        </li>
+        <li>
+            <a href="${ctx}/withholding/withholdPay">代扣支付</a>
+        </li>
+        <li>
+            <a href="${ctx}/withholding/refundOrder">代扣退款</a>
+        </li>
+        <li>
+            <a href="${ctx}/withholding/orderQuery">订单查询</a>
+        </li>
+        <li>
+            <a href="${ctx}/withholding/queryRefundOrder">退款订单查询</a>
+        </li>
     </ul>
 </div>
 <!--尾部-->
