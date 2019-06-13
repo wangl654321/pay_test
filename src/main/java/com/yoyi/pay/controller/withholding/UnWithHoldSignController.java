@@ -87,11 +87,8 @@ public class UnWithHoldSignController {
             sendParams.put("merchantId", merchantId);
             sendParams.put("tranData", tranData);
             sendParams.put("merSignMsg", merSignMsg);
-            String value = instance.post(regUrl, sendParams, null);
-            String decode = Base64Utils.decode(value);
+            result = instance.post(regUrl, sendParams, null);
             //将xml转换为map
-            Map<String, String> stringStringMap = YoYiPayUtil.xmlParse(decode);
-            result = json.toJson(stringStringMap);
             logger.info("代扣解约,调取接口返回明文,{}", result);
         } catch (Exception e) {
             logger.error("代扣解约,将参数封装成tranData,异常{}", e);
