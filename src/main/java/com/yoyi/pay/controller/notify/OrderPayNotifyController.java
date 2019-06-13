@@ -34,7 +34,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/order/pay")
-public class PayNotifyController {
+public class OrderPayNotifyController {
 
     private static Logger logger = LogManager.getLogger();
 
