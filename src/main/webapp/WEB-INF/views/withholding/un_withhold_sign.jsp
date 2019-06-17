@@ -1,5 +1,3 @@
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@include file="/base/base.jsp" %>
 <html>
