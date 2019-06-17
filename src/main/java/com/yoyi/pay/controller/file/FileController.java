@@ -45,6 +45,9 @@ public class FileController {
     @Autowired
     private YyPayService yyPayService;
 
+    @Autowired
+    private FtpUtils ftpUtils;
+
     /**
      * 对账文件下载跳转
      *
@@ -93,12 +96,12 @@ public class FileController {
     @RequestMapping(value = "/save")
     public String registered(Ftp ftp) {
 
-        ftp.setIpAddr("60.12.221.84");
-        ftp.setPort(21126);
-        ftp.setPath("/duizhangwenjian");
-        ftp.setUserName("M100002677");
-        ftp.setPwd("H04#247F");
-        ftp.setFileName("M100002677_20190515.txt");
+        ftp.setIpAddr(ftpUtils.getFtpIp());
+        ftp.setPort(ftpUtils.getFtpPort());
+        ftp.setPath(ftpUtils.getFtpPath());
+        ftp.setUserName(ftpUtils.getFtpName());
+        ftp.setPwd(ftpUtils.getFtpPassword());
+        ftp.setFileName(ftpUtils.getFtpName() + "_20190515.txt");
         try {
             logger.info("对账文件下载===>开始");
             SftpUtil sftpUtil = new SftpUtil();
@@ -137,7 +140,7 @@ public class FileController {
                     //yyPayService.batchInsert(subList);
                 }
             }
-            return  String.valueOf(size);
+            return String.valueOf(size);
         } catch (Exception e) {
             logger.error("对账文件下载,异常,{}", e);
             return "1";
