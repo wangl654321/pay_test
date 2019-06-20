@@ -98,7 +98,7 @@ public class BindBankAccQueryController {
             String decode = Base64Utils.decode(value);
             logger.info("已绑定银行账户查询,返回,{}", decode);
 
-            Map<String, String> map = YoYiPayUtil.xmlParse(decode);
+            Map<String, Object> map = YoYiPayUtil.xmlParseMap(decode);
             result = json.toJson(map);
             logger.info("已绑定银行账户查询,调取接口返回明文,{}", result);
         } catch (Exception e) {
