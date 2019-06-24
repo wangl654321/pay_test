@@ -1,4 +1,4 @@
-package com.yoyi.pay.test;
+package com.test;
 
 import cn.miludeer.jsoncode.JsonCode;
 
