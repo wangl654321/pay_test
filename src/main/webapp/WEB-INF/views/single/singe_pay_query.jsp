@@ -80,11 +80,8 @@
             <p><label>接口名称:</label><input name="interfaceName" id="interfaceName" type="text" value="QueryOrder"  placeholder="必填"/></p>
             <p><label>版本号:</label><input name="version" id="version" type="text" value="B2C1.0" placeholder="必填"/></p>
 
-
-
             <p><label>订单编号:</label><input name="orderNo" id="orderNo" type="text" class="check_required" placeholder="必填"/></p>
             <p><label>随机数:</label><input name="random" id="random" type="text"  class="check_required" placeholder="必填"/></p>
-
             <p>
                 <input type='button' value='提 交' onclick="subFrom()"/>
                 <input type='button' value='返 回' onclick="javascript:history.go(-1)"/>
