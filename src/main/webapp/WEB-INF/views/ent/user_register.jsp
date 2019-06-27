@@ -76,8 +76,10 @@
 
             <p><label>营业执照照片:</label><input name="qyCardImg" id="qyCardImg" type="text" value="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554119579005&di=5d4383fa144b136764b5635fe1b18d65&imgtype=0&src=http%3A%2F%2Fwww.ms.gov.cn%2F__local%2F9%2FB8%2F9C%2F7163346FBE84915FD16ABBFDE2F_45F52755_66F36.png" class="check_required" placeholder="必填"/></p>
             <p><label>法人身份证正面照:</label><input name="frCardImgZ" id="frCardImgZ" type="text" value="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3830200018,593871402&fm=26&gp=0.jpg" class="check_required" placeholder="必填"/></p>
-
             <p><label>法人身份证反面照:</label><input name="frCardImgF" id="frCardImgF" type="text" value="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554119552010&di=d5ca0762f309693c8718b3025c23dfc8&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180722%2F192c7171eeb240718cd85d9f7298793c.jpeg" class="check_required" placeholder="必填"/></p>
+
+            <p><label>法人手持开户说明:</label><input name="frCardImgG" id="frCardImgG" type="text" value="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1561633222852&di=bc7f3fbaf2e5a5b0e30f645077656d3b&imgtype=0&src=http%3A%2F%2Fwww.haoyebao.com%2Fdata%2Fupload%2Fshop%2Feditor%2F20161101211146_90557.png" class="check_required" placeholder="必填"/></p>
+
             <p><label>实际控制人:</label><input name="actualController" id="actualController" type="text" class="check_required" placeholder="必填(可以为法人或股东)"/></p>
 
             <p><label>实际控制人证件类型:</label>
@@ -149,6 +151,7 @@
             <p><label>经营范围:</label><input name="businessScope" id="businessScope" type="text" class="check_required"  placeholder="必填"/></p>
             <p><label>回调地址:</label><input name="notifyUrl" id="notifyUrl" value="http://kang115326.xicp.net:13829/test/register/notify" type="text"class="check_required"  placeholder="非必填"/></p>
             <p><label>受益人:</label><input name="submitContent" id="submitContent" type="text" placeholder="非必填"/></p>
+            <br>
             <p>
                 <input type='button' value='提 交' onclick="subFrom()"/>
                 <input type='button' value='返 回' onclick="javascript:history.go(-1)"/>
