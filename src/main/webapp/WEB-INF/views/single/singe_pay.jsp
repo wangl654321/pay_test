@@ -15,7 +15,7 @@
             width: 1000px;
             margin: 0 auto;
             background: #C0DFFF;
-            height: 768px;
+            height: 800px;
         }
         {
             width: 120px;
@@ -81,7 +81,6 @@
             <p><label>版本号:</label><input name="version" id="version" type="text" value="B2C1.0" placeholder="必填"/></p>
 
             <p><label>收款账户:</label><input name="recAcct" id="recAcct" type="text" value="" placeholder="必填" class="check_required"/></p>
-            <p><label>付款账户:</label><input name="payAcct" id="payAcct" type="text" value="" placeholder="必填" class="check_required"/></p>
             <p><label>汇款金额:</label><input name="orderAmt" id="orderAmt" type="text" placeholder="订单金额" placeholder="必填" class="check_required"/></p>
 
             <p><label>收款客户名称:</label><input name="accountName" id="accountName" type="text" placeholder="必填" class="check_required"/></p>
@@ -109,13 +108,15 @@
 
             <p><label>访问ip:</label><input name="userIp" id="userIp" value="127.0.0.1" type="text" placeholder="必填"  class="check_required"/></p>
             <p><label>银行卡种:</label>
-                <select name="cardType" id="cardType">
+            <select name="cardType" id="cardType">
                     <option value="0">借记卡</option>
                     <option value="1">贷记卡</option>
                     <option value="2">准贷记卡/公务员卡</option>
                     <option value="9">对公户</option>
                 </select>
             </p>
+            <p><label>回调通知地址:</label><input name="notifyUrl" id="notifyUrl" value="http://kang115326.xicp.net:13829/test/register/notify" type="text"  placeholder="非必填"/></p>
+            <p><label>票号:</label><input name="ticketNo" id="ticketNo" value="" type="text" placeholder="非必填" /></p>
             <p>
                 <input type='button' value='提 交' onclick="subFrom()"/>
                 <input type='button' value='返 回' onclick="javascript:history.go(-1)"/>
