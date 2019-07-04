@@ -141,7 +141,7 @@ public class SecOrderConfirmController {
 
             List<Map<String,String>> list = new ArrayList<>();
             for (String key : sendParams.keySet()) {
-                Map<String,String> mp= new HashMap<>(1);
+                Map<String,String> mp= new HashMap<>(2);
                 mp.put("key",key);
                 mp.put("value",sendParams.get(key));
                 list.add(mp);

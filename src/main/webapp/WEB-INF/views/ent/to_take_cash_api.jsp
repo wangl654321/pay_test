@@ -27,14 +27,7 @@
             if (flag) {
                 return false;
             }
-
-            $.post($("#fromId").attr("action"), $("#fromId").serialize(), function (data) {
-                if (data == "") {
-                    alert("未知异常");
-                    return false;
-                }
-                alert(data);
-            });
+            $("#fromId").submit();
         }
     </script>
 </head>
@@ -46,7 +39,7 @@
 
             <h3>提现请求 请求参数</h3>
             <p><label>测试地址:</label>
-                <input name="regUrl" id="regUrl" type="text" value="${test}/ent/userBindApi.do" placeholder="必填" class = "check_required"/>
+                <input name="regUrl" id="regUrl" type="text" value="${test}/ent/toTakeCashApi.do" placeholder="必填" class = "check_required"/>
             </p>
             <p><label>商户代码:</label>
                 <input name="merchantId" id="merchantId" type="text" value="${yMerchantId}" placeholder="必填" class = "check_required"/>
