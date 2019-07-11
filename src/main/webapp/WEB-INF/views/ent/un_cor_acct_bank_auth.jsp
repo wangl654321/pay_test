@@ -71,6 +71,9 @@
             <p><label>回调地址:</label>
                 <input name="returnURL" id="returnURL" type="text" value="http://wanglu654321.wicp.net/test/register/notify/manage" class="check_required" placeholder="必填"/>
             </p>
+            <p><label>银行卡种:</label>
+                <input name="cardType" id="cardType" type="text" placeholder="非必填"/>
+            </p>
             <p>
                 <input type='button' value='提 交' onclick="subFrom()"/>
                 <input type='button' value='返 回' onclick="javascript:history.go(-1)"/>

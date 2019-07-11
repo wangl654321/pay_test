@@ -79,12 +79,17 @@
         <li>
             <a href="${ctx}/ent/bankAccUnBind">解绑银行账户</a>
         </li>
-        <li>
+        <%--<li>
             <a href="${ctx}/ent/corAcctBankAuth">企业账户打款认证(已绑定银行账户)</a>
-        </li>
+        </li>--%>
+
         <li>
             <a href="${ctx}/ent/unCorAcctBankAuth">企业账户打款认证(未绑定银行账户)</a>
         </li>
+        <li>
+            <a href="${ctx}/ent/toTakeCashApi">提现请求</a>
+        </li>
+
         <li>
             <a href="${ctx}/ent/bankAcctAuthQuery">企业账户打款结果查询</a>
         </li>
