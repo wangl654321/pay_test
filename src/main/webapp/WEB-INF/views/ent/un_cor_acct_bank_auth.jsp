@@ -60,7 +60,7 @@
                 <input name="bankName" id="bankName" type="text" class="check_required" placeholder="必填"/>
             </p>
             <p><label>开户行银行编码:</label>
-                <input name="bankId" id="bankId" type="text" class="check_required" placeholder="必填"/>
+                <input name="bankId" id="bankId" type="text" placeholder="非必填"/>
             </p>
             <p><label>银行帐号:</label>
                 <input name="accountNo" id="accountNo" type="text" class="check_required" placeholder="必填"/>
