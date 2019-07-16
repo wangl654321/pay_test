@@ -177,6 +177,12 @@
         <li></li>
 
         <li>
+            <a href="${ctx}/single/billOrderUpload">单笔票据上传</a>
+        </li>
+
+        <li></li>
+
+        <li>
             <a href="${ctx}/settle">结算通测试</a>
         </li>
         <li>
