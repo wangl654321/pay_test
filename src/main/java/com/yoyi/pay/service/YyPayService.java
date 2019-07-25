@@ -1,10 +1,16 @@
 package com.yoyi.pay.service;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.yoyi.pay.dao.YyPayDao;
 import com.yoyi.pay.dao.YyPayMapper;
+import com.yoyi.pay.entity.YyPay;
+import com.yoyi.pay.utils.JsonMapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,8 +36,13 @@ import java.util.Map;
 @Transactional(rollbackFor = RuntimeException.class)
 public class YyPayService {
 
+    private static JsonMapperUtil json = new JsonMapperUtil();
+
     @Autowired
     private YyPayMapper yyPayMapper;
+
+    @Autowired
+    private YyPayDao yyPayDao;
 
     /**
      * 对账文件解析批量保存
@@ -40,7 +51,64 @@ public class YyPayService {
      * @return
      */
     public int batchInsert(List<Map<String, String>> subList) {
-        int num = yyPayMapper.batchInsert(subList);
-        return num;
+        subList.forEach(stringStringMap -> {
+            YyPay yyPay = json.fromJson(json.toJson(stringStringMap), YyPay.class);
+            Integer insert = yyPayDao.insert(yyPay);
+        });
+        return subList.size();
+    }
+
+    /**
+     * 分页
+     *
+     * @param pageNumber
+     * @param pageSize
+     * @return
+     */
+    public List<YyPay> selectAllInPage(int pageNumber, int pageSize) {
+
+        Page<YyPay> page = new Page<>(pageNumber, pageSize);
+        YyPay yyPay = new YyPay();
+        yyPay.setStatus("1");
+        EntityWrapper entityWrapper = new EntityWrapper(yyPay);
+        return yyPayDao.selectPage(page, entityWrapper);
+    }
+
+
+    /**
+     * delete功能
+     */
+    public void delete() {
+        YyPay yyPay = new YyPay();
+        yyPay.setPid(1);
+        EntityWrapper entityWrapper = new EntityWrapper(yyPay);
+        yyPayDao.delete(entityWrapper);
+    }
+
+
+    /**
+     * id批量in 查询
+     *
+     * @return
+     */
+    public List<YyPay> selectInIdArr() {
+        List<Integer> idList = new ArrayList<>();
+        idList.add(1);
+        idList.add(2);
+        idList.add(3);
+        return yyPayDao.selectBatchIds(idList);
+    }
+
+    /**
+     * 根据 entity 条件，查询全部记录
+     *
+     * @return
+     */
+    public List<YyPay> selectList() {
+        YyPay yyPay = new YyPay();
+        yyPay.setStatus("1");
+        EntityWrapper entityWrapper = new EntityWrapper(yyPay);
+        List list = yyPayDao.selectList(entityWrapper);
+        return list;
     }
 }

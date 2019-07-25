@@ -82,7 +82,7 @@ public class AliPayAndWeChatQueryController {
             HttpsUtil instance = HttpsUtil.getInstance();
 
             logger.info("(微信支付宝)单笔订单查询,将参数封装成tranData,xml,{}", xml);
-            Map<String, String> sendParams = new HashMap<>(8);
+            Map<String, String> sendParams = new HashMap<>(5);
             sendParams.put("merchantId", merchantId);
             sendParams.put("version", version);
             sendParams.put("interfaceName", interfaceName);
