@@ -111,4 +111,23 @@ public class YyPayService {
         List list = yyPayDao.selectList(entityWrapper);
         return list;
     }
+
+    /**
+     * 复杂的多条件查询
+     *
+     * @return
+     */
+    public List<YyPay> selectAllByWrapper4() {
+        EntityWrapper entity = new EntityWrapper();
+        //大于
+        entity.gt("pid", "0");
+        //小于等于
+        entity.le("pid", 11);
+        //不等于
+        entity.ne("pid", "null");
+        entity.like("pid", "tt");
+        entity.notLike("pid", "sadas");
+        entity.orderBy("pid");
+        return yyPayDao.selectList(entity);
+    }
 }
