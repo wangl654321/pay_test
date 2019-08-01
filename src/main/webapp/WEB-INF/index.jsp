@@ -191,6 +191,9 @@
         <li>
             <a href="${ctx}/withholdSign">代扣</a>
         </li>
+        <li>
+            <a href="${ctx}/ecs/remitCertificate">汇款凭证</a>
+        </li>
     </ul>
 </div>
 <!--尾部-->
