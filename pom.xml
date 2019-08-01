@@ -202,7 +202,7 @@
             <version>1.2.4</version>
         </dependency>
         <!--mybatis-plus-->
-        <dependency>
+       <!-- <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatisplus-spring-boot-starter</artifactId>
             <version>1.0.5</version>
@@ -211,7 +211,7 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>2.3</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <profiles>

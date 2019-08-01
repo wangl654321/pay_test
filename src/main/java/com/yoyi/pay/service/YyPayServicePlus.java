@@ -1,3 +1,4 @@
+/*
 package com.yoyi.pay.service;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -16,6 +17,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+*/
 /***
  *
  *
@@ -33,7 +35,8 @@ import java.util.Map;
  * 审核时间：
  * 审核描述：
  *
- */
+ *//*
+
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
 public class YyPayServicePlus implements IService<YyPay> {
@@ -222,3 +225,4 @@ public class YyPayServicePlus implements IService<YyPay> {
         return null;
     }
 }
+*/

@@ -1,6 +1,5 @@
 package com.yoyi.pay.controller.file;
 
-import com.yoyi.pay.service.YyPayService;
 import com.yoyi.pay.utils.Ftp;
 import com.yoyi.pay.utils.FtpUtil;
 import com.yoyi.pay.utils.SftpUtil;
@@ -42,8 +41,8 @@ public class FileController {
 
     private static Logger logger = LogManager.getLogger();
 
-    @Autowired
-    private YyPayService yyPayService;
+    //@Autowired
+    //private YyPayService yyPayService;
 
     @Autowired
     private FtpUtils ftpUtils;

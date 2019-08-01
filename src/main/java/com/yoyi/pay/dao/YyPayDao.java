@@ -1,9 +1,11 @@
+/*
 package com.yoyi.pay.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.yoyi.pay.entity.YyPay;
 import org.apache.ibatis.annotations.Mapper;
 
+*/
 /***
  *
  *
@@ -21,7 +23,9 @@ import org.apache.ibatis.annotations.Mapper;
  * 审核时间：
  * 审核描述：
  *
- */
+ *//*
+
 @Mapper
 public interface  YyPayDao extends BaseMapper<YyPay> {
 }
+*/

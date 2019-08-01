@@ -1,3 +1,4 @@
+/*
 package com.yoyi.pay.service;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+*/
 /***
  *
  *
@@ -31,7 +33,8 @@ import java.util.Map;
  * 审核时间：
  * 审核描述：
  *
- */
+ *//*
+
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
 public class YyPayService {
@@ -44,12 +47,14 @@ public class YyPayService {
     @Autowired
     private YyPayDao yyPayDao;
 
-    /**
+    */
+/**
      * 对账文件解析批量保存
      *
      * @param subList
      * @return
-     */
+     *//*
+
     public int batchInsert(List<Map<String, String>> subList) {
         subList.forEach(stringStringMap -> {
             YyPay yyPay = json.fromJson(json.toJson(stringStringMap), YyPay.class);
@@ -58,13 +63,15 @@ public class YyPayService {
         return subList.size();
     }
 
-    /**
+    */
+/**
      * 分页
      *
      * @param pageNumber
      * @param pageSize
      * @return
-     */
+     *//*
+
     public List<YyPay> selectAllInPage(int pageNumber, int pageSize) {
 
         Page<YyPay> page = new Page<>(pageNumber, pageSize);
@@ -75,9 +82,11 @@ public class YyPayService {
     }
 
 
-    /**
+    */
+/**
      * delete功能
-     */
+     *//*
+
     public void delete() {
         YyPay yyPay = new YyPay();
         yyPay.setPid(1);
@@ -86,11 +95,13 @@ public class YyPayService {
     }
 
 
-    /**
+    */
+/**
      * id批量in 查询
      *
      * @return
-     */
+     *//*
+
     public List<YyPay> selectInIdArr() {
         List<Integer> idList = new ArrayList<>();
         idList.add(1);
@@ -99,11 +110,13 @@ public class YyPayService {
         return yyPayDao.selectBatchIds(idList);
     }
 
-    /**
+    */
+/**
      * 根据 entity 条件，查询全部记录
      *
      * @return
-     */
+     *//*
+
     public List<YyPay> selectList() {
         YyPay yyPay = new YyPay();
         yyPay.setStatus("1");
@@ -112,11 +125,13 @@ public class YyPayService {
         return list;
     }
 
-    /**
+    */
+/**
      * 复杂的多条件查询
      *
      * @return
-     */
+     *//*
+
     public List<YyPay> selectAllByWrapper4() {
         EntityWrapper entity = new EntityWrapper();
         //大于
@@ -131,3 +146,4 @@ public class YyPayService {
         return yyPayDao.selectList(entity);
     }
 }
+*/
