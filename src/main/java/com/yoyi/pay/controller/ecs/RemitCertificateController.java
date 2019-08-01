@@ -5,10 +5,16 @@ import com.yoyi.pay.utils.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.misc.BASE64Decoder;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +44,8 @@ public class RemitCertificateController {
 
     private static JsonMapperUtil json = new JsonMapperUtil();
 
+    private static String base = "";
+
     /**
      * 汇款凭证,跳转
      *
@@ -54,9 +62,8 @@ public class RemitCertificateController {
      * @param request
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/toRemitCertificate")
-    public String registered(HttpServletRequest request) {
+    public String registered(HttpServletRequest request, Model model) {
 
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String, String> params = new HashMap<>(8);
@@ -73,7 +80,7 @@ public class RemitCertificateController {
             }
             params.put(keys, parameterMap.get(keys)[0]);
         }
-        String result = "";
+
         try {
             String xml = YoYiPayUtil.parseXMLIsBlank(params);
             String tranData = Base64Utils.encode(xml);
@@ -87,12 +94,51 @@ public class RemitCertificateController {
             sendParams.put("merchantId", merchantId);
             sendParams.put("tranData", tranData);
             sendParams.put("merSignMsg", merSignMsg);
-            result = instance.post(regUrl, sendParams, null);
+            String result  = instance.post(regUrl, sendParams, null);
+            Map<String,String> map = json.fromJson(result, Map.class);
+
+            String data = map.get("tranData");
+            String tranDataGBK = new String(ProcessMessage.Base64Decode(data), "GBK");
+            String signData = map.get("merSignMsg");
+            boolean flag = ProcessMessage.verifyMessage(tranDataGBK, signData, BaseUtils.getPath(BaseUtils.TEST_NN_SING));
+            if(flag){
+                String decode = Base64Utils.decode(data);
+                Map<String, String> stringStringMap = YoYiPayUtil.xmlParse(decode);
+
+                model.addAttribute("msg",map.get("errorMsg"));
+                base = stringStringMap.get("imgData");
+            }
+
             //将xml转换为map
             logger.info("汇款凭证,调取接口返回明文,{}", result);
         } catch (Exception e) {
             logger.error("汇款凭证,将参数封装成tranData,异常{}", e);
         }
-        return result;
+        return "ecs/remit_certificate_code";
+    }
+
+    /**
+     * 图片显示
+     * @param response
+     */
+    @RequestMapping(value = "/imgData")
+    public void code ( HttpServletResponse response) {
+        try {
+            logger.info("汇款凭证,图片转换");
+            byte[] bytes = Base64Utils.decodes(base);
+            OutputStream outputStream = response.getOutputStream();
+            outputStream.write(bytes);
+            base = "";
+        }catch (Exception e){
+            logger.error("汇款凭证,图片转换异常", e);
+        }
+
+    }
+
+    public static void decoderBase64File(String base64Code,String targetPath) throws Exception {
+        byte[] buffer = new BASE64Decoder().decodeBuffer(base64Code);
+        FileOutputStream out = new FileOutputStream(targetPath);
+        out.write(buffer);
+        out.close();
     }
 }

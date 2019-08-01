@@ -67,6 +67,24 @@ public class Base64Utils {
     /**
      * Base64编码解密
      *
+     * @param data 待解密字符串
+     * @return 解密后字节数组
+     * @throws CodecException 异常
+     */
+    public static byte[] decodes(String data) {
+        try {
+            byte[] bytes = ProcessMessage.Base64Decode(data);
+            return bytes;
+        } catch (Exception e) {
+            System.out.println("解码异常" + e);
+        }
+        return null;
+    }
+
+
+    /**
+     * Base64编码解密
+     *
      * @param data        参数
      * @param charsetName 字符编码
      * @return

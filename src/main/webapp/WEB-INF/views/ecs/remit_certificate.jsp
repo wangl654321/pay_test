@@ -27,13 +27,7 @@
     </style>
     <script type="text/javascript">
         $(function () {
-            var rand = parseInt(Math.random() * 100000);
-            rand = 100000000 + rand;
-            $("#orderNo").val(rand);
 
-            var recAcctBankNo = parseInt(Math.random() * 100000);
-            recAcctBankNo = 100000000 + recAcctBankNo;
-            $("#merchantSerial").val(recAcctBankNo);
         })
 
         function subFrom() {
@@ -58,11 +52,12 @@
                 <input name="regUrl" id="regUrl" type="text" value="${test}/ecs/remitCertificate.do" required="required"/>
             </p>
             <p><label>商户代码:</label><input name="merchantId" id="merchantId" type="text"value="${yMerchantId}" class="check_required"  placeholder="必填"/></p>
+
             <p><label>商户流水号:</label><input name="merchantSerial" id="merchantSerial" type="text" placeholder="必填" required="required"/></p>
             <p><label>汇款单号:</label><input name="orderNo" id="orderNo" type="text" placeholder="协议号" required="required"/></p>
 
             <p>
-                <input type='button' value='提 交' onclick="subFrom()"/>
+                <input type='submit' value='提 交'/>
                 <input type='button' value='返 回' onclick="javascript:history.go(-1)"/>
             </p>
         </form>
