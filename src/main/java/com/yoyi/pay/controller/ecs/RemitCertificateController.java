@@ -132,7 +132,6 @@ public class RemitCertificateController {
         }catch (Exception e){
             logger.error("汇款凭证,图片转换异常", e);
         }
-
     }
 
     public static void decoderBase64File(String base64Code,String targetPath) throws Exception {
