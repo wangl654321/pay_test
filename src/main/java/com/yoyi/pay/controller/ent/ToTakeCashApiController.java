@@ -95,13 +95,7 @@ public class ToTakeCashApiController {
             List<Map<String,String>> list = new ArrayList<>();
 
             logger.info("提现请求,处理中");
-            for (String key : sendParams.keySet()) {
-                Map<String,String> mp= new HashMap<>(4);
-                mp.put("key",key);
-                mp.put("value",sendParams.get(key));
-                list.add(mp);
-            }
-            model.addAttribute("list",list);
+            UserSettingApiController.fromParam(model, sendParams, list);
             logger.info("提现请求,调取接口返回明文,{}", result);
         } catch (Exception e) {
             logger.error("提现请求,将参数封装成tranData,异常{}", e);

@@ -27,14 +27,7 @@
             if (flag) {
                 return false;
             }
-
-            $.post($("#fromId").attr("action"), $("#fromId").serialize(), function (data) {
-                if (data == "") {
-                    alert("未知异常");
-                    return false;
-                }
-                alert(data);
-            });
+            $("#fromId").submit();
         }
     </script>
 </head>

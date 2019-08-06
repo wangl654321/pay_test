@@ -1,15 +1,20 @@
 package com.yoyi.pay.controller.ent;
 
 import com.yoyi.pay.controller.BaseUtils;
-import com.yoyi.pay.utils.*;
+import com.yoyi.pay.utils.Base64Utils;
+import com.yoyi.pay.utils.JsonMapperUtil;
+import com.yoyi.pay.utils.ProcessMessage;
+import com.yoyi.pay.utils.YoYiPayUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /***
@@ -54,9 +59,8 @@ public class UserSettingApiController {
      * @param request
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/saveUserSettingApi")
-    public String registered(HttpServletRequest request) {
+    public String registered(HttpServletRequest request, Model model) {
 
         Map<String, String[]> parameterMap = request.getParameterMap();
         Map<String, String> params = new HashMap<>(8);
@@ -65,7 +69,7 @@ public class UserSettingApiController {
         //请求地址
         String regUrl = request.getParameter("regUrl");
         logger.info("账号设置,将参数封装成tranData,请求地址,{}", regUrl);
-
+        model.addAttribute("regUrl", regUrl);
         //接收页面参数封装xml在base64加密
         for (String keys : parameterMap.keySet()) {
             if ("regUrl".equals(keys) || "merchantId".equals(keys)) {
@@ -73,32 +77,43 @@ public class UserSettingApiController {
             }
             params.put(keys, parameterMap.get(keys)[0]);
         }
-        String result = "";
+
         try {
             String xml = YoYiPayUtil.parseXMLIsBlank(params);
             String tranData = Base64Utils.encode(xml);
             logger.info("账号设置,将参数封装成tranData,xml,{}", xml);
             //订单签名数据
             String merSignMsg = ProcessMessage.sign(xml, BaseUtils.getPath(BaseUtils.TEST_SING), BaseUtils.TEST_PASSWORD);
-            HttpsUtil instance = HttpsUtil.getInstance();
             Map<String, String> sendParams = new HashMap<>(8);
 
-            logger.info("账号设置,将参数封装成tranData,处理中");
-            sendParams.put("merchantId", merchantId);
             sendParams.put("tranData", tranData);
+            sendParams.put("merchantId", merchantId);
             sendParams.put("merSignMsg", merSignMsg);
-            String value = instance.get(regUrl, sendParams, null);
-
-            logger.info("账号设置,调取接口返回密文,{}", value);
-            String decode = Base64Utils.decode(value);
-            logger.info("账号设置,返回,{}", decode);
-
-            Map<String, String> map = YoYiPayUtil.xmlParse(decode);
-            result = json.toJson(map);
-            logger.info("账号设置,调取接口返回明文,{}", result);
+            logger.info("账号设置,将参数封装成tranData,处理中");
+            List<Map<String, String>> list = new ArrayList<>();
+            logger.info("账号设置,处理中");
+            fromParam(model, sendParams, list);
         } catch (Exception e) {
             logger.error("账号设置,将参数封装成tranData,异常{}", e);
         }
-        return result;
+        return "settle/sec_order_confirm_web";
+    }
+
+
+    /**
+     * 表单参数封装
+     *
+     * @param model
+     * @param sendParams
+     * @param list
+     */
+    public static void fromParam(Model model, Map<String, String> sendParams, List<Map<String, String>> list) {
+        for (String key : sendParams.keySet()) {
+            Map<String, String> mp = new HashMap<>(4);
+            mp.put("key", key);
+            mp.put("value", sendParams.get(key));
+            list.add(mp);
+        }
+        model.addAttribute("list", list);
     }
 }
