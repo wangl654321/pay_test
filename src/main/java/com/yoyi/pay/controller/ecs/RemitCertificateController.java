@@ -104,11 +104,9 @@ public class RemitCertificateController {
             if(flag){
                 String decode = Base64Utils.decode(data);
                 Map<String, String> stringStringMap = YoYiPayUtil.xmlParse(decode);
-
                 model.addAttribute("msg",map.get("errorMsg"));
                 base = stringStringMap.get("imgData");
             }
-
             //将xml转换为map
             logger.info("汇款凭证,调取接口返回明文,{}", result);
         } catch (Exception e) {
